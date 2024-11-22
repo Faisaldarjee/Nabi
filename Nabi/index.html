@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>For Nabi</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Arial', sans-serif;
+      background: linear-gradient(to bottom, #ffcccc, #ffe6e6);
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      transition: background-color 1s ease, background-position 5s ease;
+      text-align: center;
+    }
+
+    h1 {
+      font-size: 3em;
+      color: #ff5e57;
+      text-align: center;
+      animation: fadeIn 3s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    /* Pulsating text animation */
+    @keyframes pulse {
+      0% { transform: scale(1); opacity: 0.8; }
+      50% { transform: scale(1.1); opacity: 1; }
+      100% { transform: scale(1); opacity: 0.8; }
+    }
+
+    h1 {
+      animation: fadeIn 3s ease-in-out, pulse 1.5s ease-in-out infinite;
+    }
+
+    #revealButton {
+      margin-top: 30px;
+      padding: 10px 20px;
+      font-size: 1.2em;
+      color: white;
+      background: #ff6f61;
+      border: none;
+      border-radius: 20px;
+      cursor: pointer;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      transition: all 0.3s ease;
+    }
+
+#surpriseButton {
+  position: fixed; /* Screen ke respect mein position fix kar di */
+  bottom: 20px; /* Bottom margin */
+  right: 20px; /* Right margin */
+  padding: 10px 20px;
+  font-size: 1.2em;
+  color: white;
+  background: #ff6f61;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+
+    #revealButton:hover,#surpriseButton:hover {
+      background: #ff3e3e;
+      transform: scale(1.1);
+    }
+
+    /* Card Layout */
+    #card {
+      display: none;
+      background: #ffe6e6;
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+      width: 300px;
+      text-align: center;
+      transition: opacity 1s ease;
+      opacity: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      margin-top: 20px;
+      position: relative;
+    }
+
+    /* Image styling inside the card */
+    #nabiImage {
+      width: 150px;
+      height: 150px;
+      border-radius: 0;
+      box-shadow: 0 0 20px rgba(255, 105, 180, 0.8);
+      transition: opacity 0.5s ease;
+      opacity: 0;
+      cursor: pointer;
+      margin-bottom: 20px;
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    #nabiImage.fade-in {
+      opacity: 1;
+    }
+
+    /* Compliment styling with a smooth fade-in */
+    #compliment {
+      font-size: 1.2em;
+      color: #ff4040;
+      margin-top: 20px;
+      line-height: 1.5;
+      opacity: 0;
+      animation: fadeInCompliment 3s ease-in-out forwards;
+    }
+
+    @keyframes fadeInCompliment {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    /* Animation for hearts floating */
+    @keyframes floatUp {
+      from { transform: translateY(0); }
+      to { transform: translateY(-100vh); opacity: 0; }
+    }
+
+    #heartContainer {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+    }
+
+    /* Background color change */
+    @keyframes backgroundChange {
+      0% { background-color: #ffcccb; }
+      50% { background-color: #ffb3b3; }
+      100% { background-color: #ffe6e6; }
+    }
+
+  </style>
+</head>
+<body>
+  <h1>Hey Nabi! You're the spark in my life that makes everything brighter. ✨</h1>
+  <button id="revealButton">Click me</button>
+  <button id="surpriseButton" onclick="window.location.href='surprise.html'">Surprise</button>
+
+  <!-- Card Layout -->
+  <div id="card">
+    <img id="nabiImage" src="C:\Users\farooquedarjee\Desktop\Nabi\Images" alt="Nabi">
+    <div id="compliment">Your eyes are so deep and captivating, they feel like they’re holding untold stories.</div>
+  </div>
+
+  <div id="heartContainer"></div>
+
+  <!-- Music -->
+  <audio id="music" loop>
+    <source src="C:\Users\farooquedarjee\Desktop\Nabi\music.mp3" type="audio/mp3">
+    Your browser does not support the audio element.
+  </audio>
+
+  <script>
+     const compliments = [
+      "Your eyes are so deep and captivating, they feel like they’re holding untold stories.",
+      "Your smile is pure magic; it lights up my world in ways I can’t even describe.",
+      "You have this incredible way of making everyone around you feel special, but the truth is, you’re the real star in every room you walk into.",
+      "You’re not just beautiful; you’re the definition of elegance mixed with charm. It’s impossible not to be drawn to you.",
+      "Your beauty isn’t just in how you look but in how you make everything seem brighter when you’re around.",
+      "There’s a strength in you that’s inspiring, yet you carry it with such grace that it’s mesmerizing.",
+      "Your laughter is my favorite melody—it makes my heart dance every single time I hear it.",
+      "Every little thing about you, from the way you laugh to the way you care, makes you truly one of a kind.",
+      "Being with you feels like I’ve won life’s greatest lottery.",
+      "You don’t just make my days better; you make my life feel like a dream I never want to wake up from.",
+      "You’re the reason I believe angels exist—how else could someone like you be real?",
+      "Your smile has this magical power; it doesn’t just make you glow, it makes everything around you come alive too.",
+      "You’re not just beautiful on the outside, but your heart and soul make you absolutely radiant.",
+      "You’re like art—every time I look at you, I notice something new and even more beautiful.",
+      "I don’t believe in perfection, but every time I look at you, I’m forced to rethink.",
+      "I can't imagine anyone who would be a better wife and mother to my children than you.",
+      "I never believed in soulmates until I found you.",
+      "I love it when we laugh together because your laughter is the most beautiful music in the world.",
+      "It's hard to believe that a girl as amazing as you exists. I'm so lucky I found you.",
+      "You have the most beautiful eyes. I get lost in them. Staring into them is an escape for me."
+    ];
+
+    let index = 0;
+
+   const images = [
+  "C:/Users/farooquedarjee/Desktop/Nabi/Images/Nabi1.jpg",
+  "C:/Users/farooquedarjee/Desktop/Nabi/Images/Nabi2.jpg",
+  "C:/Users/farooquedarjee/Desktop/Nabi/Images/Nabi3.jpg",
+  "C:/Users/farooquedarjee/Desktop/Nabi/Images/Nabi4.jpg",
+  "C:/Users/farooquedarjee/Desktop/Nabi/Images/Nabi5.jpg",
+  "C:/Users/farooquedarjee/Desktop/Nabi/Images/Nabi6.jpg",
+  "C:/Users/farooquedarjee/Desktop/Nabi/Images/Nabi7.jpg",
+  "C:/Users/farooquedarjee/Desktop/Nabi/Images/Nabi8.jpg",
+  "C:/Users/farooquedarjee/Desktop/Nabi/Images/Nabi9.jpg",
+  "C:/Users/farooquedarjee/Desktop/Nabi/Images/Nabi10.jpg"
+];
+
+    let imageIndex = 0;
+
+    document.getElementById('revealButton').addEventListener('click', () => {
+      // Change background color with smooth transition
+      document.body.style.animation = 'backgroundChange 5s infinite';
+
+      const card = document.getElementById('card');
+      card.style.display = 'block';
+      card.style.opacity = 1;
+
+      const nabiImage = document.getElementById('nabiImage');
+      nabiImage.style.display = 'block';
+      nabiImage.classList.add('fade-in');
+
+      imageIndex = (imageIndex + 1) % images.length;
+      nabiImage.src = images[imageIndex];
+
+      document.getElementById('compliment').textContent = compliments[index];
+      index = (index + 1) % compliments.length;
+
+      // Start music when button is clicked
+      const music = document.getElementById('music');
+      music.play();
+
+      // Heart animation
+      const heartContainer = document.getElementById('heartContainer');
+      for (let i = 0; i < 20; i++) {
+        const heart = document.createElement('div');
+        heart.style.position = 'absolute';
+        heart.style.width = '20px';
+        heart.style.height = '20px';
+        heart.style.backgroundColor = '#ff69b4';
+        heart.style.clipPath = 'polygon(50% 0%, 0% 100%, 100% 100%)';
+        heart.style.animation = `floatUp ${Math.random() * 4 + 3}s linear forwards`;
+        heart.style.left = Math.random() * 100 + 'vw';
+        heart.style.top = Math.random() * 100 + 'vh';
+        heartContainer.appendChild(heart);
+      }
+    });
+  </script>
+</body>
+</html>

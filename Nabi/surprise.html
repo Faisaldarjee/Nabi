@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Surprise Video</title>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      background: linear-gradient(135deg, #ff7f92, #d0a1d5); /* Soft pink to lavender gradient */
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+      overflow: hidden; /* To avoid scrollbars */
+    }
+
+    h1 {
+      font-size: 2em;
+      color: white;
+      text-align: center;
+      margin-bottom: 20px;
+      opacity: 0; /* Start with hidden text */
+      animation: fadeIn 2s forwards; /* Apply fade-in effect */
+    }
+
+    @keyframes fadeIn {
+      0% {
+        opacity: 0;
+        transform: translateY(-20px); /* Start from above */
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0); /* End in normal position */
+      }
+    }
+
+    video {
+      width: 90%;
+      max-width: 800px;
+      max-height: 70%; /* Ensures it fits vertically */
+      border-radius: 10px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+      border: 5px solid transparent; /* Start with transparent border */
+      animation: borderGlow 3s infinite; /* Apply glowing border effect */
+    }
+
+    @keyframes borderGlow {
+      0% {
+        border-color: #f0e1ff; /* Soft pink */
+      }
+      25% {
+        border-color: #d0a1d5; /* Lavender */
+      }
+      50% {
+        border-color: #add8e6; /* Light blue */
+      }
+      75% {
+        border-color: #ffb3ab; /* Peach */
+      }
+      100% {
+        border-color: #add8e6; /* Soft pink */
+      }
+    }
+
+    button {
+      margin-top: 20px;
+      padding: 10px 20px;
+      font-size: 1.2em;
+      color: white;
+      background-color: #ff7f92; /* Soft pink */
+      border: none;
+      border-radius: 20px;
+      cursor: pointer;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      transition: all 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #ff4f6d; /* Slightly darker pink */
+      transform: scale(1.05);
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Surprise! Here's a special video just for you. 💖</h1>
+
+  <!-- Video Section -->
+  <video controls>
+    <source src="C:\Users\farooquedarjee\Desktop\Nabi\Video\Nabi5.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+  </video>
+
+  <!-- Back to home page -->
+  <button onclick="window.location.href='index.html'">Go Back</button>
+
+</body>
+</html>
